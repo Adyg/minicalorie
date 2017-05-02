@@ -41,13 +41,17 @@
         - unzip
         - recode
         - git
+  - name: ensure postgresql user is created
+    become: true
+    become_user: postgres
+    postgresql_user: name=minicalorie password=minicalorie role_attr_flags=CREATEDB,SUPERUSER
   - name: ensure database is created
     become: true
     become_user: postgres
-    postgresql_db: name=usda_sr28 login_user=postgres encoding=UTF-8 lc_collate=en_US.UTF-8 lc_ctype=en_US.UTF-8
+    postgresql_db: name=minicalorie login_user=postgres encoding=UTF-8 lc_collate=en_US.UTF-8 lc_ctype=en_US.UTF-8
 
 - hosts: all
-  become: yes
+  become: true
 
   roles:
     - geerlingguy.ruby
@@ -57,4 +61,3 @@
       java_packages:
         - openjdk-8-jdk
     - geerlingguy.solr
-    - pablocrivella.heroku-toolbelt
