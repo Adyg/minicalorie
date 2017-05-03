@@ -17,3 +17,19 @@ class DerivCd(models.Model):
     """
     deriv_cd = models.CharField(max_length=4, blank=False, null=False, primary_key=True)
     deriv_desc = models.CharField(max_length=120, blank=False, null=False)
+
+
+class DataSrc(models.Model):
+    """Provides a citation to the DataSrc_ID in the Sources of Data Link table.
+
+    Source: DATA_SRC.txt in USDA SR28
+    """
+    datasrc_id = models.CharField(max_length=6, blank=False, null=False, primary_key=True)
+    authors = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, blank=False, null=False)
+    year = models.CharField(max_length=4)
+    journal = models.CharField(max_length=135)
+    vol_city = models.CharField(max_length=16)
+    issue_state = models.CharField(max_length=5)
+    start_page = models.CharField(max_length=5)
+    end_page = models.CharField(max_length=5)
