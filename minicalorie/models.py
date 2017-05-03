@@ -45,3 +45,12 @@ class Footnote(models.Model):
     footnt_typ = models.CharField(max_length=1, blank=False, null=False)
     nutr_no = models.CharField(max_length=3)
     footnt_txt = models.CharField(max_length=200, blank=False, null=False)
+
+
+class Langdesc(models.Model):
+    """Contains the descriptions for only those factors used in coding the selected food items codes.
+
+    Source: LANGDESC.txt in USDA SR28
+    """
+    factor_code = models.CharField(max_length=5, blank=False, null=False, primary_key=True)
+    description = models.CharField(max_length=200, blank=False, null=False)
