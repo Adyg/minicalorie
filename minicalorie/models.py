@@ -54,3 +54,12 @@ class Langdesc(models.Model):
     """
     factor_code = models.CharField(max_length=5, blank=False, null=False, primary_key=True)
     description = models.CharField(max_length=200, blank=False, null=False)
+
+
+class FdGroup(models.Model):
+    """Contains a list of food groups used in SR28 and their descriptions.
+
+    Source: FD_GROUP.txt in USDA SR28
+    """
+    fdgrp_cd = models.CharField(max_length=4, blank=False, null=False, primary_key=True)
+    fdgrp_desc = models.CharField(max_length=60, blank=False, null=False)
