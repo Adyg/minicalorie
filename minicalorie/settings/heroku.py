@@ -29,16 +29,16 @@ def get_env_setting(setting, default_value=False):
             error_msg = "Set the %s env variable" % setting
             raise ImproperlyConfigured(error_msg)
 
-########## HOST CONFIGURATION
+# HOST CONFIGURATION
 # See: https://docs.djangoproject.com/en/1.5/releases/1.5/#allowed-hosts-required-in-production
 ALLOWED_HOSTS = ['*']
-########## END HOST CONFIGURATION
+# END HOST CONFIGURATION
 
 INSTALLED_APPS += (
     'waitress',
 )
 
-########## EMAIL CONFIGURATION
+# EMAIL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
@@ -62,25 +62,25 @@ EMAIL_USE_TLS = True
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#server-email
 SERVER_EMAIL = EMAIL_HOST_USER
-########## END EMAIL CONFIGURATION
+# END EMAIL CONFIGURATION
 
-########## DATABASE CONFIGURATION
+# DATABASE CONFIGURATION
 DATABASES = {'default': dj_database_url.config()}
-########## END DATABASE CONFIGURATION
+# END DATABASE CONFIGURATION
 
-########## CACHE CONFIGURATION
+# CACHE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
-CACHES = {    
+CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     }
 }
-########## END CACHE CONFIGURATION
+# END CACHE CONFIGURATION
 
-########## SECRET CONFIGURATION
+# SECRET CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = get_env_setting('SECRET_KEY')
-########## END SECRET CONFIGURATION
+# END SECRET CONFIGURATION
 
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = get_env_setting('STATIC_ROOT', 'staticfiles')
@@ -91,7 +91,7 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_PATH, '../../static'),
 )
 
-######### STORAGE CONFIGURATION
+# STORAGE CONFIGURATION
 # See: http://django-storages.readthedocs.org/en/latest/index.html
 INSTALLED_APPS += (
     'storages',
@@ -115,9 +115,9 @@ AWS_QUERYSTRING_AUTH = False
 AWS_EXPIRY = 60 * 60 * 24 * 7
 AWS_HEADERS = {
     'Cache-Control': 'max-age=%d, s-maxage=%d, must-revalidate' % (AWS_EXPIRY,
-        AWS_EXPIRY)
+                                                                   AWS_EXPIRY)
 }
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
-########## END STORAGE CONFIGURATION
+# END STORAGE CONFIGURATION
