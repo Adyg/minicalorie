@@ -152,3 +152,15 @@ class Weight(models.Model):
 
     class Meta:
         unique_together = ('ndb_no', 'seq', )
+
+
+class Langual(models.Model):
+    """Factors from the LanguaL Thesaurus used to code a particular food
+
+    Source: LANGUAL.txt in USDA SR28
+    """
+    ndb_no = models.ForeignKey(FoodDes, to_field='ndb_no', blank=False, null=False)
+    factor_code = models.ForeignKey(Langdesc, to_field='factor_code', blank=False, null=False)
+
+    class Meta:
+        unique_together = ('ndb_no', 'factor_code', )
