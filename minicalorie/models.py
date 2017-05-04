@@ -105,3 +105,33 @@ class NutrDef(models.Model):
     nutrdesc = models.CharField(max_length=60, blank=False, null=False)
     num_dec = models.CharField(max_length=1, blank=False, null=False)
     sr_order = models.IntegerField(blank=False, null=False)
+
+
+class NutData(models.Model):
+    """Nutrient values and information about the values.
+
+    Contains the nutrient values and information about the values, including expanded statistical information.
+
+    Source: NUT_DATA.txt in USDA SR28
+    """
+    ndb_no = models.ForeignKey(FoodDes, to_field='ndb_no', blank=False, null=False)
+    nutr_no = models.ForeignKey(NutrDef, to_field='nutr_no', blank=False, null=False)
+    nutr_val = models.DecimalField(max_digits=10, decimal_places=3, blank=False, null=False)
+    num_data_pts = models.DecimalField(max_digits=5, decimal_places=0, blank=False, null=False)
+    std_error = models.DecimalField(max_digits=8, decimal_places=3)
+    src_cd = models.CharField(max_length=2, blank=False, null=False)
+    deriv_cd = models.CharField(max_length=4)
+    ref_ndb_no = models.CharField(max_length=5)
+    add_nutr_mark = models.CharField(max_length=1)
+    num_studies = models.IntegerField()
+    min = models.DecimalField(max_digits=10, decimal_places=3)
+    max = models.DecimalField(max_digits=10, decimal_places=3)
+    df = models.IntegerField()
+    low_eb = models.DecimalField(max_digits=10, decimal_places=3)
+    up_eb = models.DecimalField(max_digits=10, decimal_places=3)
+    stat_cmt = models.CharField(max_length=10)
+    addmod_date = models.CharField(max_length=10)
+    cc = models.CharField(max_length=1)
+
+    class Meta:
+        unique_together = ('ndb_no', 'nutr_no', )
