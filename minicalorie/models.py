@@ -63,3 +63,32 @@ class FdGroup(models.Model):
     """
     fdgrp_cd = models.CharField(max_length=4, blank=False, null=False, primary_key=True)
     fdgrp_desc = models.CharField(max_length=60, blank=False, null=False)
+
+
+class FoodDes(models.Model):
+    """Descriptions and food group designators for all food items.
+
+    Contains long and short descriptions and food group designators for all food items, along with common
+    names, manufacturer name, scientific name, percentage and description of refuse, and
+    factors used for calculating protein and kilocalories, if applicable. Items used in the
+    FNDDS are also identified by value of "Y" in the Survey field.
+
+    Source: FOOD_DES.txt in USDA SR28
+    """
+    ndb_no = models.CharField(max_length=5, blank=False, null=False, primary_key=True)
+    fdgrp_cd = models.ForeignKey(FdGroup, to_field='fdgrp_cd')
+    long_desc = models.CharField(max_length=200, blank=False, null=False)
+    shrt_desc = models.CharField(max_length=60, blank=False, null=False)
+    comname = models.CharField(max_length=100)
+    manufacname = models.CharField(max_length=65)
+    survey = models.CharField(max_length=1)
+    ref_desc = models.CharField(max_length=135)
+    refuse = models.IntegerField()
+    sciname = models.CharField(max_length=65)
+    n_factor = models.DecimalField(max_digits=4, decimal_places=2)
+    pro_factor = models.DecimalField(max_digits=4, decimal_places=2)
+    fat_factor = models.DecimalField(max_digits=4, decimal_places=2)
+    cho_factor = models.DecimalField(max_digits=4, decimal_places=2)
+
+    class Meta:
+        unique_together = ('ndb_no', 'fdgrp_cd',)
