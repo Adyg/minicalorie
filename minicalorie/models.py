@@ -92,3 +92,16 @@ class FoodDes(models.Model):
 
     class Meta:
         unique_together = ('ndb_no', 'fdgrp_cd',)
+
+
+class NutrDef(models.Model):
+    """Provides the 3-digit nutrient code, unit of measure, INFOODS tagname, and description.
+
+    Source: NUTR_DEF.txt in USDA SR28
+    """
+    nutr_no = models.CharField(max_length=3, blank=False, null=False, primary_key=True)
+    units = models.CharField(max_length=7, blank=False, null=False)
+    tagname = models.CharField(max_length=20)
+    nutrdesc = models.CharField(max_length=60, blank=False, null=False)
+    num_dec = models.CharField(max_length=1, blank=False, null=False)
+    sr_order = models.IntegerField(blank=False, null=False)
