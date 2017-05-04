@@ -164,3 +164,16 @@ class Langual(models.Model):
 
     class Meta:
         unique_together = ('ndb_no', 'factor_code', )
+
+
+class Datsrcln(models.Model):
+    """Link the Nutrient Data table with the Sources of Data table
+
+    Source: DATSRCLN.txt in USDA SR28
+    """
+    ndb_no = models.ForeignKey(FoodDes, to_field='ndb_no', blank=False, null=False)
+    nutr_no = models.ForeignKey(NutrDef, to_field='nutr_no', blank=False, null=False)
+    datasrc_id = models.ForeignKey(Datasrc, to_field='datasrc_id', blank=False, null=False)
+
+    class Meta:
+        unique_together = ('ndb_no', 'nutr_no', 'datasrc_id', )
