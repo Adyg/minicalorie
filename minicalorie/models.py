@@ -135,3 +135,20 @@ class NutData(models.Model):
 
     class Meta:
         unique_together = ('ndb_no', 'nutr_no', )
+
+
+class Weight(models.Model):
+    """Weight in grams of a number of common measures for each food item
+
+    Source: WEIGHT.txt in USDA SR28
+    """
+    ndb_no = models.ForeignKey(FoodDes, to_field='ndb_no', blank=False, null=False)
+    seq = models.CharField(max_length=2, blank=False, null=False)
+    amount = models.DecimalField(max_digits=6, decimal_places=3, blank=False, null=False)
+    msre_desc = models.CharField(max_length=64, blank=False, null=False)
+    gm_wgt = models.DecimalField(max_digits=7, decimal_places=1, blank=False, null=False)
+    num_data_pts = models.DecimalField(max_digits=4, decimal_places=0)
+    std_dev = models.DecimalField(max_digits=7, decimal_places=3, blank=False, null=False)
+
+    class Meta:
+        unique_together = ('ndb_no', 'seq', )
