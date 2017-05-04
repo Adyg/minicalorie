@@ -1,0 +1,4 @@
+{{ object.comname }}
+{{ object.manufacname }}
+{{ object.shrt_desc }}
+{{ object.long_desc }}
