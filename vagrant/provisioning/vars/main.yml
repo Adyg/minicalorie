@@ -8,4 +8,4 @@ ansible_user: vagrant
 
 nodejs_version: '6.x'
 
-solr_version: "5.5.4"
+solr_version: '4.7.0'
