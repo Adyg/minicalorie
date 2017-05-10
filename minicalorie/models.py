@@ -145,10 +145,10 @@ class Weight(models.Model):
     ndb_no = models.ForeignKey(FoodDes, to_field='ndb_no', blank=False, null=False)
     seq = models.CharField(max_length=2, blank=False, null=False)
     amount = models.DecimalField(max_digits=6, decimal_places=3, blank=False, null=False)
-    msre_desc = models.CharField(max_length=64, blank=False, null=False)
+    msre_desc = models.CharField(max_length=84, blank=False, null=False)
     gm_wgt = models.DecimalField(max_digits=7, decimal_places=1, blank=False, null=False)
     num_data_pts = models.DecimalField(max_digits=4, decimal_places=0, blank=True, null=True)
-    std_dev = models.DecimalField(max_digits=7, decimal_places=3, blank=False, null=False)
+    std_dev = models.DecimalField(max_digits=7, decimal_places=3, blank=True, null=True)
 
     class Meta:
         unique_together = ('ndb_no', 'seq', )
