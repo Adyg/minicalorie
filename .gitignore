@@ -50,4 +50,4 @@ vagrant/data
 vagrant/.vagrant
 
 # SASS
-.sass-cache/*
+.sass-cache
