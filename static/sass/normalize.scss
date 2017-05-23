@@ -3,8 +3,6 @@
 // Import the legacy variables (relevant for controlling compass-normalize).
 @import "variables/**/*";
 
-// Generate normalize.css.
-@import "normalize";
 
 * {
   @include box-sizing('border-box');

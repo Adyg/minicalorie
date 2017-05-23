@@ -1,6 +1,16 @@
-@import "singularitygs"; 
+//Basic stylings
+$br: 4px;
+$xs-pad: 4px;
+$sm-pad: 8px;
+$md-pad: 16px;
+$lg-pad: 20px;
+$xlg-pad: 40px;
+$trans: .3s;
 
-@include add-grid(12);
-@include add-gutter(0);
+//Breakpoints
+$small-breakpoint: 400px;
+$large-breakpoint: 768px;
 
-@include sgs-change('output', 'isolation');
+
+//Other
+$border: 1px solid $dividers;

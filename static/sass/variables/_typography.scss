@@ -1,0 +1,17 @@
+//Font
+$sans-serif: 'Helvetica Neue', Helvetica, 'Lucida Grande', sans-serif;
+$serif: Georgia, Times, 'Times New Roman', serif;
+$monospace: Menlo, Monaco, Consolas, 'Courier New', monospace;
+$font-family: $sans-serif;
+
+//Typography
+$font-size-base: 16px;
+$font-size-large: ceil(($font-size-base * 1.25));
+$font-size-small: ceil(($font-size-base * .85));
+$font-size-h1: 36px;
+$font-size-h2: 30px;
+$font-size-h3: 24px;
+$font-size-h4: 18px;
+$font-size-h5: $font-size-base;
+$font-size-h6: $font-size-small;
+$line-height-base: 1.4;

@@ -3,3 +3,14 @@
 @import "singularitygs";
 
 @import "variables/**/*";
+
+@charset 'utf-8';
+
+@import
+'sanitize',
+'base',
+'typography',
+'form',
+'buttons',
+'tables';
+

@@ -1,0 +1,20 @@
+
+//Colors
+$primary: #2196f3;
+$accent: #64ffda;
+$red: #f44336;
+$yellow: #ffeb3b;
+$grey: #efefef;
+$white: #fff;
+$black: #000;
+
+//Text
+$text: rgba(0, 0, 0, .8);
+$secondary: rgba(0, 0, 0, .54);
+$disabled: rgba(0, 0, 0, .38);
+$dividers: rgba(0, 0, 0, .12);
+
+//Links
+$link-color: $primary;
+$link-hover-color: darken($link-color, 15%);
+
